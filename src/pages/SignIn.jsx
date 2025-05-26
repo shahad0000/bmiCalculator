@@ -6,9 +6,11 @@ import Swal from "sweetalert2";
 const SignIn = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
+      username: "",
+      email: "",
+      password: "",
+      confirmPass: "",
+    });
 
   const handleChange = (e) => {
     const { id, value } = e.target;
