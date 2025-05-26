@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 
 const Home = () => {
-  const username = JSON.parse(localStorage.getItem("credentials")).username;
+  const username = JSON.parse(localStorage.getItem("credentials")).username || "";
   const isLoggedIn = localStorage.getItem("loggedIn") === "true";
   const [userData, setUserData] = useState({
     weight: 0,
