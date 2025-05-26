@@ -3,8 +3,10 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 
 const Home = () => {
-    const username = JSON.parse(localStorage.getItem("credentials") || "{}").username || "";
-    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+  const username =
+    JSON.parse(localStorage.getItem("credentials") || "{}").username || "";
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     weight: 0,
     height: 0,
@@ -14,7 +16,10 @@ const Home = () => {
     bodyShape: "",
   });
 
-  if (!isLoggedIn) window.location.href = "/signIn";
+  if (!isLoggedIn) {
+    navigate("/signIn");
+    window.location.href = "/signIn";
+  }
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -76,7 +81,9 @@ const Home = () => {
     <div className=" min-w-screen min-h-screen">
       <nav className="flex bg-[#00215d9a] text-white text-2xl font-bold items-center justify-between p-2">
         <div>Hello, {username}</div>
-        <button className="border-1 border-white py-2 px-3" onClick={logOut}>Log Out</button>
+        <button className="border-1 border-white py-2 px-3" onClick={logOut}>
+          Log Out
+        </button>
       </nav>
 
       <div className="flex flex-col items-center p-11 gap-14">
